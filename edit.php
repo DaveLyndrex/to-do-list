@@ -31,6 +31,7 @@
                 if ($update == true):
             ?>
             <button type="submit" name="update" class="btn btn-info">Update</button>
+            <br><br>
             <?php endif;?>
         </form>
     </div>

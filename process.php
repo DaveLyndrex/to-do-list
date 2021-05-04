@@ -16,7 +16,7 @@ if (isset($_POST['submit'])){
     $mysqli->query("INSERT INTO tasks(task) VALUES 
     ('$task')") or die ($mysqli->error);
 
-    $_SESSION['message'] = "Record has been saved!";
+    $_SESSION['message'] = '<script>alert("Record has been saved!")</script>';
     $_SESSION['msg_type'] = "Success";
     
     header("location: index.php");
@@ -27,7 +27,7 @@ if (isset($_GET['delete'])){
     $id = $_GET['delete'];
     $mysqli->query("DELETE FROM tasks WHERE id=$id") or die($mysqli->error);
 
-    $_SESSION['message'] = "Record has been deleted!";
+    $_SESSION['message'] = '<script>alert("Record has been deleted!)"</script>';
     $_SESSION['msg_type'] = "danger";
 
     header("location: index.php");
@@ -52,8 +52,8 @@ if (isset($_POST['update'])){
     $mysqli->query("UPDATE tasks SET task='$task' WHERE id=$id") 
     or die($mysqli->error);
 
-    $_SESSION['message'] = "Record updated successfully!";
-    $_SESSION['msg_type']= "warning";
+    $_SESSION['message'] = '<script>alert("Record updated successfully!")</script>';
+    
 
     header("location: index.php");
 }
