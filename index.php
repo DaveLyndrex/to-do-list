@@ -11,7 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Product Entry</title>
+    <title>PHP|CRUD</title>
 
     <style>
         body {
@@ -45,16 +45,6 @@
             position: relative;
             padding: 5px 10px;
         }
-
-
-        tr.strikeout td:before {
-            content: " ";
-            position: absolute;
-            top: auto;
-            left: auto;
-            border-bottom: 1px solid #111;
-            width: auto;
-        }
     </style>
 </head>
 
@@ -77,7 +67,9 @@
     <nav class="navbar navbar-dark bg-dark">
         <div class="container">
             <a class="navbar-brand" href="#">PHP CRUD|To-Do-List</a>
-            <button type="button" class="btn btn-outline-light">Trash</button>
+            <form action="trash.php">
+                <button type="submit" id="btn2" class="btn btn-outline-light">Trash</button>
+            </form>
         </div>
     </nav>
     <br>
@@ -98,7 +90,7 @@
                                 <label for="inputTask" class="form-label">Task</label>
                                 <input type="text" name="task" class="form-control" id="inputTask" value="<?php echo $task; ?>">
                             </div>
-                            <button type="submit" name="submit" class="btn btn-outline-primary">Submit</button>
+                            <button type="submit" name="submit" class="btn btn-outline-primary">Add</button>
                     </div>
 
                     </form>
@@ -121,17 +113,19 @@
             while ($row = $result->fetch_assoc()) :
             ?>
                 <tr>
+
                     <td>
-                        <label><input type="checkbox" id="checkbox" name="packersOff" class="strikethrough"></label>
+                        <input type="checkbox" id="checkbox" name="checkbox" class="checkbox">
                     </td>
 
                     <td>
                         <?php echo $row['task']; ?>
                     </td>
                     <td>
-                        <a href="edit.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>
+                        <a href="edit.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>&nbsp;
                         <a href="process.php?delete=<?php echo $row['id']; ?>"><i class="fa fa-trash" style="color:red"></i></a>
                     </td>
+
                 </tr>
             <?php endwhile; ?>
         </table>
@@ -139,14 +133,17 @@
     </div>
 
     <script type="text/javascript">
-        $('.strikethrough').change(function() {
+        $('.checkbox').change(function() {
             if (this.checked) {
-                $(this).parent().parent().addClass("strikeout");
+                $(this).parent().parent().css("text-decoration", "line-through");
             } else {
-                $(this).parent().parent().removeClass("strikeout");
+                $(this).parent().parent().css("text-decoration", "none");
             }
         });
     </script>
+
+    
+
 </body>
 
 </html>

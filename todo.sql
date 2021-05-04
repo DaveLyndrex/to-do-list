@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2021 at 12:50 PM
--- Server version: 10.4.14-MariaDB
--- PHP Version: 7.4.11
+-- Generation Time: May 04, 2021 at 04:15 PM
+-- Server version: 10.4.10-MariaDB
+-- PHP Version: 7.4.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -37,10 +37,31 @@ CREATE TABLE `tasks` (
 --
 
 INSERT INTO `tasks` (`id`, `task`) VALUES
-(2, 'Prayer after waking up'),
-(4, 'Eat Breakfast'),
-(5, 'Do tasking'),
-(6, 'Tak a bath');
+(20, 'Do Coding'),
+(26, 'hapit na galabad akong ulo'),
+(27, 'galibog nako unsay buhaton nako'),
+(36, 'kalami isumbag ug sagingggggg'),
+(37, 'YESSSSS!');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `trash`
+--
+
+CREATE TABLE `trash` (
+  `id` int(11) NOT NULL,
+  `trash_task` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `trash`
+--
+
+INSERT INTO `trash` (`id`, `trash_task`) VALUES
+(1, 'coding'),
+(5, 'tabanggggg nurseeeeeeee'),
+(6, 'kalami isumbag ug sagingggggg');
 
 --
 -- Indexes for dumped tables
@@ -53,6 +74,12 @@ ALTER TABLE `tasks`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `trash`
+--
+ALTER TABLE `trash`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -60,7 +87,13 @@ ALTER TABLE `tasks`
 -- AUTO_INCREMENT for table `tasks`
 --
 ALTER TABLE `tasks`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+
+--
+-- AUTO_INCREMENT for table `trash`
+--
+ALTER TABLE `trash`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
