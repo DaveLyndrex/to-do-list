@@ -28,10 +28,8 @@ if (isset($_GET['delete'])) {
     $sql->query ("INSERT INTO trash(trash_task) SELECT task FROM tasks WHERE id='" .$_GET["delete"]. "'") or die($sql->error);
     $mysqli->query("DELETE FROM tasks WHERE id=$id") or die($mysqli->error);
 
-    $_SESSION['message'] = '<script>alert("Removed Successfully! <br> Added to trash!)"</script>';
-    $_SESSION['msg_type'] = "Danger";
-
-    header("location: index.php");
+ 
+    header("location: trash.php");
 }
 
 #

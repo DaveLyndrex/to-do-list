@@ -11,6 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Pangolin&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.js" integrity="sha512-n/4gHW3atM3QqRcbCn6ewmpxcLAHGaDjpEBu4xZd47N0W2oQ+6q7oc3PXstrJYXcbNU1OHdQ1T7pAP+gi5Yu8g==" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <title>PHP|CRUD</title>
 
     <style>
@@ -123,7 +124,7 @@
                     </td>
                     <td>
                         <a href="edit.php?edit=<?php echo $row['id']; ?>"><i class="fa fa-edit"></i></a>&nbsp;
-                        <a href="process.php?delete=<?php echo $row['id']; ?>"><i class="fa fa-trash" style="color:red"></i></a>
+                        <a class="delete"id="<?php echo $row['id']; ?>"><i class="fa fa-trash" style="color:red"></i></a>
                     </td>
 
                 </tr>
@@ -140,9 +141,43 @@
                 $(this).parent().parent().css("text-decoration", "none");
             }
         });
+
     </script>
 
-    
+<script>
+$('.delete').on('click', function(event){
+
+    let timerInterval
+            Swal.fire({
+            title: 'Auto close alert!',
+            html: 'I will close in <b></b> milliseconds.',
+            timer: 10000,
+            timerProgressBar: true,
+        didOpen: () => {
+            Swal.showLoading()
+                timerInterval = setInterval(() => {
+        const content = Swal.getContent()
+            if (content) {
+        const b = content.querySelector('b')
+            if (b) {
+            b.textContent = Swal.getTimerLeft()
+            }
+        }
+        window.location.href = "/to-do-list/process.php?delete="+this.id;
+        }, 100)
+    },
+    willClose: () => {
+        clearInterval(timerInterval)
+    }
+    }).then((result) => {
+    /* Read more about handling dismissals below */
+    if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('Done')
+  }
+})
+ })
+</script>
+
 
 </body>
 
